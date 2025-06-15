@@ -30,7 +30,7 @@
       background-color: var(--darker);
       padding: 15px 20px;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
       color: var(--light);
       position: sticky;
@@ -44,17 +44,32 @@
       margin: 0;
       font-weight: 700;
       color: var(--primary);
-      text-align: center;
+    }
+    
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+    }
+    
+    .menu-toggle span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: var(--light);
+      border-radius: 3px;
+      transition: all 0.3s ease;
     }
     
     nav ul {
       list-style: none;
-      margin: 15px 0 0 0;
+      margin: 0;
       padding: 0;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
+      gap: 20px;
     }
     
     nav ul li {
@@ -65,11 +80,9 @@
       color: var(--gray);
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.85em;
+      font-size: 0.95em;
       letter-spacing: 0.5px;
       transition: all 0.3s ease;
-      display: inline-block;
-      padding: 5px;
     }
     
     nav ul li a:hover {
@@ -279,6 +292,36 @@
       color: var(--primary);
     }
     
+    /* Mobile menu styles */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+      
+      nav ul {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background-color: var(--darker);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 25px;
+        transition: all 0.5s ease;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+      }
+      
+      nav ul.active {
+        left: 0;
+      }
+      
+      nav ul li a {
+        font-size: 1.1em;
+      }
+    }
+    
     /* Media query for slightly larger mobile screens */
     @media (min-width: 480px) {
       .container {
@@ -300,26 +343,11 @@
     }
     
     /* Media query for tablets and small laptops */
-    @media (min-width: 768px) {
+    @media (min-width: 769px) {
       .container {
         max-width: 700px;
         margin: 30px auto;
         padding: 40px;
-      }
-      
-      nav {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 15px 30px;
-      }
-      
-      nav h1 {
-        font-size: 1.6em;
-        text-align: left;
-      }
-      
-      nav ul {
-        margin-top: 0;
       }
       
       .profile-header {
@@ -361,7 +389,12 @@
 <body>
   <nav>
     <h1>ZOUHAIR EL MACHHOUR</h1>
-    <ul>
+    <div class="menu-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul id="nav-menu">
       <li><a href="#profile"><i class="fas fa-user"></i> Profile</a></li>
       <li><a href="#experience"><i class="fas fa-trophy"></i> Experience</a></li>
       <li><a href="#attributes"><i class="fas fa-running"></i> Attributes</a></li>
@@ -491,5 +524,43 @@
       <p>&copy; 2025 | All Rights Reserved</p>
     </footer>
   </div>
+
+  <script>
+    // Mobile menu toggle functionality
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+    
+    mobileMenu.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      
+      // Animate hamburger to X
+      const spans = this.querySelectorAll('span');
+      if (this.classList.contains('active')) {
+        spans[0].style.transform = 'translateY(9px) rotate(45deg)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'translateY(-9px) rotate(-45deg)';
+      } else {
+        spans[0].style.transform = '';
+        spans[1].style.opacity = '';
+        spans[2].style.transform = '';
+      }
+    });
+    
+    // Close menu when clicking on a link
+    const navLinks = document.querySelectorAll('#nav-menu a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        navMenu.classList.remove('active');
+        
+        // Reset hamburger animation
+        const spans = mobileMenu.querySelectorAll('span');
+        spans[0].style.transform = '';
+        spans[1].style.opacity = '';
+        spans[2].style.transform = '';
+      });
+    });
+  </script>
 </body>
 </html>
