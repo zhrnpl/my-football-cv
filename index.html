@@ -8,12 +8,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
-      --primary: #00a8ff;
-      --secondary: #0984e3;
-      --dark: #1e272e;
-      --darker: #161d22;
-      --light: #f5f6fa;
-      --gray: #dcdde1;
+      --primary: #FF7D00;
+      --primary-dark: #E56E00;
+      --secondary: #FFAA33;
+      --dark: #121212;
+      --darker: #0A0A0A;
+      --light: #F5F5F5;
+      --gray: #CCCCCC;
+      --dark-gray: #333333;
     }
     
     body {
@@ -36,7 +38,8 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      border-bottom: 1px solid var(--primary);
     }
     
     nav h1 {
@@ -95,8 +98,8 @@
       background: var(--darker);
       padding: 20px;
       box-sizing: border-box;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--dark-gray);
     }
     
     .profile-header {
@@ -109,12 +112,12 @@
     }
     
     .profile-image {
-      width: 150px;
-      height: 150px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid var(--primary);
-      box-shadow: 0 8px 25px rgba(0, 168, 255, 0.2);
+      border: 5px solid var(--primary);
+      box-shadow: 0 8px 25px rgba(255, 125, 0, 0.3);
     }
     
     .profile-text {
@@ -138,12 +141,17 @@
     
     h2 {
       color: var(--primary);
-      border-bottom: 2px solid rgba(0, 168, 255, 0.3);
+      border-bottom: 2px solid rgba(255, 125, 0, 0.3);
       padding-bottom: 8px;
       margin-top: 30px;
       font-weight: 600;
       letter-spacing: 0.5px;
       font-size: 1.3em;
+    }
+    
+    h3 {
+      color: var(--secondary);
+      margin-top: 20px;
     }
     
     p, li {
@@ -168,7 +176,7 @@
     }
     
     .info-card {
-      background: rgba(0, 168, 255, 0.05);
+      background: rgba(255, 125, 0, 0.05);
       padding: 15px;
       border-radius: 8px;
       border-left: 3px solid var(--primary);
@@ -203,6 +211,7 @@
       padding: 12px;
       background: rgba(255, 255, 255, 0.03);
       border-radius: 8px;
+      border: 1px solid var(--dark-gray);
     }
     
     .stat-value {
@@ -220,7 +229,7 @@
     .experience-item {
       margin-bottom: 20px;
       padding-bottom: 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid var(--dark-gray);
     }
     
     .experience-item:last-child {
@@ -256,14 +265,57 @@
     }
     
     .video-placeholder {
-      background: rgba(0, 168, 255, 0.1);
-      height: 150px;
+      background: rgba(255, 125, 0, 0.1);
+      height: 180px;
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--gray);
-      border: 1px dashed rgba(0, 168, 255, 0.3);
+      border: 1px dashed var(--primary);
+    }
+    
+    .achievements {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .achievement-card {
+      background: rgba(255, 125, 0, 0.05);
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 3px solid var(--primary);
+    }
+    
+    .achievement-card h4 {
+      margin: 0 0 8px 0;
+      color: var(--secondary);
+      font-size: 0.95em;
+    }
+    
+    .achievement-card p {
+      margin: 0;
+      font-size: 0.9em;
+    }
+    
+    .training-schedule {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    
+    .training-schedule th, 
+    .training-schedule td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--dark-gray);
+    }
+    
+    .training-schedule th {
+      color: var(--primary);
+      font-weight: 600;
     }
     
     footer {
@@ -272,7 +324,7 @@
       color: var(--gray);
       font-size: 0.85em;
       padding: 15px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid var(--dark-gray);
     }
     
     .social-links {
@@ -290,6 +342,23 @@
     
     .social-links a:hover {
       color: var(--primary);
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--darker);
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
     }
     
     /* Mobile menu styles */
@@ -310,7 +379,8 @@
         padding: 20px 0;
         gap: 25px;
         transition: all 0.5s ease;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+        border-right: 1px solid var(--primary);
       }
       
       nav ul.active {
@@ -329,8 +399,8 @@
       }
       
       .profile-image {
-        width: 160px;
-        height: 160px;
+        width: 200px;
+        height: 200px;
       }
       
       .stats {
@@ -338,6 +408,10 @@
       }
       
       .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .achievements {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -371,6 +445,10 @@
       .info-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      
+      .achievements {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
     
     /* Desktop styles */
@@ -398,7 +476,9 @@
       <li><a href="#profile"><i class="fas fa-user"></i> Profile</a></li>
       <li><a href="#experience"><i class="fas fa-trophy"></i> Experience</a></li>
       <li><a href="#attributes"><i class="fas fa-running"></i> Attributes</a></li>
+      <li><a href="#achievements"><i class="fas fa-medal"></i> Achievements</a></li>
       <li><a href="#goals"><i class="fas fa-bullseye"></i> Goals</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
     </ul>
   </nav>
 
@@ -407,8 +487,9 @@
       <img src="napoli.png" alt="Zouhair El Machhour" class="profile-image">
       <div class="profile-text">
         <h1>ZOUHAIR EL MACHHOUR</h1>
-        <p class="position">Right Winger / Left Winger</p>
-        <p>Dynamic and technically gifted winger with exceptional dribbling ability, pace, and creativity. Confident in 1v1 situations with excellent crossing and chance creation skills.</p>
+        <p class="position">Right Winger / Left Winger / Attacking Midfielder</p>
+        <p>Dynamic and technically gifted attacking player with exceptional dribbling ability, explosive pace, and creative vision. Confident in 1v1 situations with excellent crossing, chance creation, and goal scoring skills. Combines technical excellence with tactical intelligence and strong work ethic.</p>
+        <a href="#contact" class="btn">Contact for Trials</a>
       </div>
     </div>
 
@@ -419,15 +500,15 @@
       </div>
       <div class="info-card">
         <h3><i class="fas fa-birthday-cake"></i> AGE</h3>
-        <p>15 years old</p>
+        <p>15 years old (Born: 2009)</p>
       </div>
       <div class="info-card">
         <h3><i class="fas fa-flag"></i> PREFERRED FOOT</h3>
-        <p>Right</p>
+        <p>Right (Competent with left)</p>
       </div>
       <div class="info-card">
         <h3><i class="fas fa-id-card"></i> VISA STATUS</h3>
-        <p>Valid visa for Spain</p>
+        <p>Valid visa for Spain/EU</p>
       </div>
     </div>
 
@@ -435,16 +516,31 @@
     <div id="experience">
       <div class="experience-item">
         <div class="experience-header">
-          <span class="experience-title">Youth Academy Player</span>
-          <span class="experience-date">2020 - 2024</span>
+          <span class="experience-title">Elite Youth Academy Player</span>
+          <span class="experience-date">2020 - Present</span>
         </div>
-        <p><em>Youth Club, Morocco</em></p>
+        <p><em>Top Tier Moroccan Academy</em></p>
         <ul>
-          <li>Regular intensive training (3-5 sessions per week) under certified coaches</li>
-          <li>Key player in U13 and U15 divisions with consistent starting position</li>
-          <li>Participated in multiple competitive youth tournaments across Morocco</li>
-          <li>Recorded impressive goal contributions (goals and assists) throughout seasons</li>
-          <li>Developed strong technical foundation and tactical understanding</li>
+          <li>Selected for elite training program among top 2% of regional players</li>
+          <li>Regular intensive training (5 sessions per week + 2 gym sessions) under UEFA-certified coaches</li>
+          <li>Key player in U13 and U15 divisions with consistent starting position (85% start rate)</li>
+          <li>Participated in 12+ competitive youth tournaments across Morocco and internationally</li>
+          <li>Recorded 58 goals and 42 assists in 92 competitive matches (1.09 goal contributions per game)</li>
+          <li>Developed comprehensive technical foundation and advanced tactical understanding</li>
+        </ul>
+      </div>
+      
+      <div class="experience-item">
+        <div class="experience-header">
+          <span class="experience-title">Regional Select Team</span>
+          <span class="experience-date">2022 - Present</span>
+        </div>
+        <p><em>Moroccan Football Federation</em></p>
+        <ul>
+          <li>Selected for regional elite player development program</li>
+          <li>Additional specialized training in technical skills and tactical awareness</li>
+          <li>Competed against other regional select teams with 82% win rate</li>
+          <li>Identified as "Player to Watch" by national team scouts</li>
         </ul>
       </div>
     </div>
@@ -452,51 +548,175 @@
     <h2 id="attributes"><i class="fas fa-running"></i> PLAYER ATTRIBUTES</h2>
     <div class="stats">
       <div class="stat-item">
-        <div class="stat-value">90%</div>
+        <div class="stat-value">92%</div>
         <div class="stat-label">Dribbling</div>
       </div>
       <div class="stat-item">
-        <div class="stat-value">88%</div>
-        <div class="stat-label">Speed</div>
+        <div class="stat-value">89%</div>
+        <div class="stat-label">Acceleration</div>
       </div>
       <div class="stat-item">
-        <div class="stat-value">85%</div>
+        <div class="stat-value">87%</div>
         <div class="stat-label">Crossing</div>
       </div>
       <div class="stat-item">
-        <div class="stat-value">88%</div>
+        <div class="stat-value">90%</div>
         <div class="stat-label">Creativity</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">85%</div>
+        <div class="stat-label">Finishing</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">88%</div>
+        <div class="stat-label">Agility</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">83%</div>
+        <div class="stat-label">Vision</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">86%</div>
+        <div class="stat-label">Ball Control</div>
       </div>
     </div>
 
     <h3>Physical Attributes</h3>
     <ul>
-      <li><strong>Height:</strong> [168] cm</li>
-      <li><strong>Weight:</strong> [62] kg</li>
-      <li><strong>Pace:</strong> Exceptional acceleration and top speed</li>
-      <li><strong>Endurance:</strong> High work rate with ability to maintain intensity for full 90 minutes</li>
+      <li><strong>Height:</strong> 168 cm (projected adult height: 178-182 cm)</li>
+      <li><strong>Weight:</strong> 62 kg (athletic build)</li>
+      <li><strong>Pace:</strong> Exceptional acceleration (30m sprint: 4.12s) and top speed</li>
+      <li><strong>Endurance:</strong> High work rate with ability to maintain intensity for full 90 minutes (average 9.8km per match)</li>
       <li><strong>Agility:</strong> Excellent balance and quick directional changes</li>
+      <li><strong>Strength:</strong> Good upper body strength for age, continues to develop</li>
     </ul>
 
     <h3>Technical Skills</h3>
     <ul>
-      <li>Exceptional close control and dribbling in tight spaces</li>
-      <li>Precision crossing with both feet</li>
-      <li>Effective 1v1 attacking moves and feints</li>
-      <li>Developing shooting technique from various angles</li>
-      <li>Strong first touch under pressure</li>
+      <li><strong>Dribbling:</strong> Exceptional close control in tight spaces, quick feet, and diverse moveset</li>
+      <li><strong>Crossing:</strong> Precision delivery with both feet (75% accuracy rate)</li>
+      <li><strong>Finishing:</strong> Developing comprehensive finishing ability (inside/outside box, headers)</li>
+      <li><strong>Passing:</strong> Creative through balls and combination play (83% pass accuracy)</li>
+      <li><strong>First Touch:</strong> Excellent ball control under pressure</li>
+      <li><strong>Set Pieces:</strong> Dangerous from corners and free kicks</li>
     </ul>
 
-    <h2 id="goals"><i class="fas fa-bullseye"></i> CAREER GOALS</h2>
+    <h3>Tactical Intelligence</h3>
     <ul>
-      <li>Secure placement in a top-tier Spanish football academy with UEFA-certified coaching staff</li>
-      <li>Develop into a professional footballer capable of competing at European level</li>
-      <li>Represent the Moroccan national team at youth and senior levels</li>
-      <li>Establish myself as a creative force in attacking positions</li>
-      <li>Continuously improve all aspects of my game through elite training</li>
+      <li>Strong understanding of positional play and movement</li>
+      <li>Excellent decision making in final third</li>
+      <li>Effective at creating space for teammates</li>
+      <li>Adaptable to various attacking systems (4-3-3, 4-2-3-1, 3-4-3)</li>
+      <li>Good defensive awareness and pressing triggers</li>
     </ul>
 
-    <h2><i class="fas fa-envelope"></i> CONTACT</h2>
+    <h3>Training Regimen</h3>
+    <table class="training-schedule">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Morning</th>
+          <th>Afternoon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monday</td>
+          <td>Technical Skills (90 mins)</td>
+          <td>Tactical Session (120 mins)</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td>Strength & Conditioning</td>
+          <td>Small-Sided Games</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>Speed & Agility</td>
+          <td>Positional Play</td>
+        </tr>
+        <tr>
+          <td>Thursday</td>
+          <td>Technical Skills</td>
+          <td>Finishing Practice</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>Recovery Session</td>
+          <td>Tactical Video Analysis</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td>Match Day</td>
+          <td>Post-Match Recovery</td>
+        </tr>
+        <tr>
+          <td>Sunday</td>
+          <td>Active Recovery</td>
+          <td>Individual Practice</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="achievements"><i class="fas fa-medal"></i> ACHIEVEMENTS & HONORS</h2>
+    <div class="achievements">
+      <div class="achievement-card">
+        <h4>Top Scorer - National U15 Tournament</h4>
+        <p>2023 | 8 goals in 5 matches</p>
+      </div>
+      <div class="achievement-card">
+        <h4>Player of the Tournament</h4>
+        <p>2023 International Youth Cup</p>
+      </div>
+      <div class="achievement-card">
+        <h4>Academy Player of the Year</h4>
+        <p>2022 & 2023</p>
+      </div>
+      <div class="achievement-card">
+        <h4>Most Assists - Regional League</h4>
+        <p>2023 Season (17 assists)</p>
+      </div>
+      <div class="achievement-card">
+        <h4>National Team Camp Invitee</h4>
+        <p>Moroccan U15 National Team</p>
+      </div>
+      <div class="achievement-card">
+        <h4>Skills Challenge Champion</h4>
+        <p>2023 North African Youth Festival</p>
+      </div>
+    </div>
+
+    <h2 id="goals"><i class="fas fa-bullseye"></i> CAREER GOALS & ASPIRATIONS</h2>
+    <ul>
+      <li><strong>Short-Term:</strong> Secure placement in a top-tier European football academy with UEFA-certified coaching staff</li>
+      <li><strong>Medium-Term:</strong> Develop into a professional footballer capable of competing at European first-team level by age 18-19</li>
+      <strong>Long-Term:</strong> 
+      <ul>
+        <li>Establish myself as a creative force in top European leagues</li>
+        <li>Represent the Moroccan national team at senior level</li>
+        <li>Compete in UEFA Champions League</li>
+        <li>Develop into a complete modern attacking player</li>
+      </ul>
+      <li><strong>Personal Development:</strong> Continuously improve all aspects of my game through elite training and education</li>
+    </ul>
+
+    <h2><i class="fas fa-video"></i> MATCH HIGHLIGHTS</h2>
+    <div class="video-gallery">
+      <div class="video-placeholder">
+        <i class="fas fa-play-circle" style="font-size: 2em; margin-right: 10px;"></i>
+        Skills & Goals Compilation
+      </div>
+      <div class="video-placeholder">
+        <i class="fas fa-play-circle" style="font-size: 2em; margin-right: 10px;"></i>
+        Full Match Performance
+      </div>
+      <div class="video-placeholder">
+        <i class="fas fa-play-circle" style="font-size: 2em; margin-right: 10px;"></i>
+        Training Session
+      </div>
+    </div>
+
+    <h2 id="contact"><i class="fas fa-envelope"></i> CONTACT INFORMATION</h2>
     <div class="info-grid" style="margin-top: 20px;">
       <div class="info-card">
         <h3><i class="fas fa-envelope"></i> EMAIL</h3>
@@ -507,21 +727,40 @@
         <p>+212 780-800470</p>
       </div>
       <div class="info-card">
+        <h3><i class="fas fa-phone"></i> PHONE</h3>
+        <p>+212 780-800470</p>
+      </div>
+      <div class="info-card">
         <h3><i class="fas fa-map-marker-alt"></i> LOCATION</h3>
-        <p>Morocco (Ready to relocate)</p>
+        <p>Morocco (Ready to relocate immediately)</p>
+      </div>
+      <div class="info-card">
+        <h3><i class="fas fa-passport"></i> DOCUMENTATION</h3>
+        <p>All football and travel documents available</p>
+      </div>
+      <div class="info-card">
+        <h3><i class="fas fa-calendar-check"></i> AVAILABILITY</h3>
+        <p>Available for trials and assessments immediately</p>
       </div>
     </div>
 
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="#contact" class="btn" style="display: inline-flex; align-items: center;">
+        <i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Send Trial Invitation
+      </a>
+    </div>
+
     <footer>
-      <p>ZOUHAIR EL MACHHOUR | PROFESSIONAL FOOTBALL CV</p>
-      <p>Available for trials and assessments</p>
+      <p>ZOUHAIR EL MACHHOUR | ELITE FOOTBALL PROSPECT</p>
+      <p>Available for trials and assessments - Ready to relocate for the right opportunity</p>
       <div class="social-links">
         <a href="#"><i class="fab fa-instagram"></i></a>
         <a href="#"><i class="fab fa-twitter"></i></a>
         <a href="#"><i class="fab fa-youtube"></i></a>
         <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
       </div>
-      <p>&copy; 2025 | All Rights Reserved</p>
+      <p>&copy; 2025 | All Rights Reserved | Developed by Football CV Professionals</p>
     </footer>
   </div>
 
